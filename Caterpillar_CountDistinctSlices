@@ -1,0 +1,28 @@
+// you can also use imports, for example:
+ import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int M, int[] A) {
+        int res=0;
+        
+        for(int b=0;b<A.length;b++) {
+            int e=b+1;
+            while(e<A.length && isOk(A, b, e)) {
+                res++;
+                e++;
+            }
+        }
+        
+        return res + A.length;
+    }
+    
+    boolean isOk(int[] A, int b, int e){
+        List<Integer> list = new ArrayList<>();
+        for(int i=b;i<=e;i++)
+            list.add(A[i]);
+        return (new HashSet<>(list)).size() == e-b+1;  
+    }
+}
